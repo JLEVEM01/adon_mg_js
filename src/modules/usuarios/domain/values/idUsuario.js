@@ -1,4 +1,4 @@
-
+import { ApiError } from "../../../../adapters/ApiError.js"
 
 export class IdUsuario {
     constructor(value){
@@ -8,7 +8,8 @@ export class IdUsuario {
 
     varificarIdUsuario(){
         if(this.value !== null){
-            throw new Error("El IdUsaurio no puede ser asignado, necesita ser un parametro null")
+            // throw new Error("")
+            throw new ApiError("El IdUsaurio no puede ser asignado, necesita ser un parametro null",400)
         }
     }
 }

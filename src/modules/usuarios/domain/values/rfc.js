@@ -1,3 +1,4 @@
+
 import { ApiError } from "../../../../adapters/ApiError.js"
 
 export class RFC{
@@ -8,10 +9,8 @@ export class RFC{
 
     verificarRFC(){
         if(this.value.length < 12 ){
-            throw ApiError.badRequet("El rfc no debe contener menos de 12 caracteres")
+            throw new ApiError("El rfc no debe contener menos de 12 caracteres",400)
         }
-        // else if(this.value !== this.value.toUpperCase){
-        //     throw ApiError.badRequet("El RFC no cuenta con una estructura valida")
-        // }
+
     }
 }

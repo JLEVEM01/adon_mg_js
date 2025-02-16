@@ -1,3 +1,6 @@
+import { ApiError } from "../../../../adapters/ApiError.js"
+
+
 export class AMaterno{
     constructor(value){
         this.value = value
@@ -6,7 +9,7 @@ export class AMaterno{
 
     verificarAMaterno(){
         if(this.value.length < 2){
-            throw new Error("El apellido materno no deber ser menos a 2 caracteres")
+            throw new ApiError('El apellido materno no deber ser menos a 2 caracteres',400)
         }
     }
 }

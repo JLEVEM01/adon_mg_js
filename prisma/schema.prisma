@@ -9,6 +9,41 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
+}
+
+
+model Usuario{
+  IdUsuario Int @id @default(autoincrement())
+  Nombre String
+  APaterno String
+  AMaterno String
+  RFC String
+  NomUsuario String @unique
+  Contraseña String
+  Permisos Permisos[]
+}
+
+
+model Organizacion {
+
+  IdOrganzacion Int @id @default(autoincrement())
+  Nombre String
+  RFC String
+  Permisos Permisos[]
+}
+
+
+model Permisos {
+
+  IdPermiso Int @id @default(autoincrement())
+  EscrituraLectura Int
+  Lectura Int
+  IdUsuario Int
+  idOrganiazcion Int
+  Orgnanizacion Organizacion @relation(fields: [idOrganiazcion], references: [IdOrganzacion])
+  Usuario Usuario @relation(fields: [IdUsuario], references: [IdUsuario])
+
+  @@unique([IdPermiso,idOrganiazcion])
 }
